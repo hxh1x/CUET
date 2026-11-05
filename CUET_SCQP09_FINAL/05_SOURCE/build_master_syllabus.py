@@ -9,7 +9,12 @@ from collections import Counter, defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from taxonomy_data import ROWS
-from weasyprint import HTML
+
+try:
+    from weasyprint import HTML
+    HAS_WEASYPRINT = True
+except (ImportError, OSError):
+    HAS_WEASYPRINT = False
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 PKG = os.path.abspath(os.path.join(BASE, ".."))
@@ -42,7 +47,12 @@ for row in ROWS:
     else:
         row["priority"] = "P3"
 
-# Validate coverage
+# Validate coverage and question bank counts
+assert len(questions) == 225, f"Expected exactly 225 questions, got {len(questions)}"
+for y in YEARS:
+    y_count = sum(1 for q in questions if q.get("year") == y)
+    assert y_count == 75, f"Expected 75 questions for year {y}, got {y_count}"
+
 used = Counter()
 for row in ROWS:
     for k in row["keys"]:
@@ -1350,7 +1360,7 @@ parts.append("""
   </ul>
 
   <h3>How to use this document with the question bank</h3>
-  <p>The companion file <b>01_question_bank_recent.csv</b> contains all 225 questions with year, question number, subject, topic and subtopic. Use it to drill one module at a time: filter by subtopic, attempt the questions, then return to the card and check whether you can explain every bullet under “What to learn”.</p>
+  <p>The companion file <b>SCQP09_Question_Bank_2024-2026.csv</b> (and <b>DATA/question_bank_v2.json</b>) contains all 225 questions with year, question number, subject, topic and subtopic. Use it to drill one module at a time: filter by subtopic, attempt the questions, then return to the card and check whether you can explain every bullet under “What to learn”.</p>
 
   <div class="box dark" style="padding:2.4mm 4mm;margin-bottom:2mm;">
     <h4>The one-sentence summary</h4>
@@ -1364,9 +1374,17 @@ parts.append("""
 parts.append("</body></html>")
 
 html_doc = "\n".join(parts)
-open(os.path.join(OUT, "SCQP09_Master_Syllabus.html"), "w", encoding="utf-8").write(html_doc)
-HTML(string=html_doc, base_url=BASE).write_pdf(os.path.join(OUT, "SCQP09_Master_Syllabus_2024-2026.pdf"))
-print("Wrote HTML and PDF")
+html_path = os.path.join(OUT, "SCQP09_Master_Syllabus.html")
+pdf_path = os.path.join(OUT, "SCQP09_Master_Syllabus_2024-2026.pdf")
+
+with open(html_path, "w", encoding="utf-8") as f:
+    f.write(html_doc)
+
+if HAS_WEASYPRINT:
+    HTML(string=html_doc, base_url=BASE).write_pdf(pdf_path)
+    print("Wrote HTML and PDF successfully.")
+else:
+    print("Wrote HTML successfully. (Note: WeasyPrint is not available; PDF generation skipped.)")
 
 # CSV export
 with open(os.path.join(OUT, "SCQP09_Master_Taxonomy.csv"), "w", newline="", encoding="utf-8") as f:

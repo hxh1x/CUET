@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ErrorLogSchema",
+  "description": "Standardized error classification and diagnostic tracking schema for CUET SCQP09",
+  "type": "object",
+  "required": [
+    "error_id",
+    "learner_id",
+    "timestamp",
+    "question_id",
+    "module_id",
+    "error_category",
+    "diagnosis"
+  ],
+  "properties": {
+    "error_id": {
+      "type": "string",
+      "description": "Unique error occurrence ID (e.g. ERR_20261105_001)"
+    },
+    "learner_id": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "question_id": {
+      "type": "string",
+      "description": "Question ID from question_bank_v2 (e.g. 2024_Q026)"
+    },
+    "module_id": {
+      "type": "string",
+      "description": "Taxonomy module identifier (e.g. M1)"
+    },
+    "error_category": {
+      "type": "string",
+      "enum": [
+        "conceptual_misunderstanding",
+        "calculation_sign_error",
+        "formula_misapplication",
+        "misread_stem_constraint",
+        "time_pressure_rush",
+        "distractor_trap",
+        "boundary_edge_case"
+      ]
+    },
+    "candidate_response": {
+      "type": ["string", "number", "null"]
+    },
+    "correct_response": {
+      "type": ["string", "number", "null"]
+    },
+    "latency_seconds": {
+      "type": "number",
+      "description": "Time spent on question before committing error"
+    },
+    "diagnosis": {
+      "type": "string",
+      "description": "Detailed explanation of why the mistake happened"
+    },
+    "remediation_action": {
+      "type": "string",
+      "description": "Prescribed drill or conceptual review to eliminate recurring error"
+    },
+    "resolved": {
+      "type": "boolean"
+    }
+  }
+}

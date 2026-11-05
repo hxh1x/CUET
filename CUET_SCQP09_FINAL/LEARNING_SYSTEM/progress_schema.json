@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LearnerProgressRecord",
+  "description": "Standardized tracking schema for CUET-PG SCQP09 candidates",
+  "type": "object",
+  "required": [
+    "learner_id",
+    "name",
+    "created_at",
+    "last_active",
+    "overall_completion_pct",
+    "module_records",
+    "assessment_history"
+  ],
+  "properties": {
+    "learner_id": {
+      "type": "string",
+      "description": "Unique identifier for the student (e.g. STU_2026_001)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Candidate full name"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "last_active": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "target_exam_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "target_score_percentile": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "overall_completion_pct": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "module_records": {
+      "type": "object",
+      "description": "State tracking for all 92 modules indexed by Module ID",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "module_id",
+          "status",
+          "mastery_tier",
+          "total_attempts"
+        ],
+        "properties": {
+          "module_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["not_started", "in_progress", "competent", "mastered", "revision_due"]
+          },
+          "mastery_tier": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "total_attempts": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "best_score_pct": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "avg_speed_seconds": {
+            "type": "number",
+            "minimum": 0
+          },
+          "last_attempt_at": {
+            "type": ["string", "null"],
+            "format": "date-time"
+          },
+          "next_review_due": {
+            "type": ["string", "null"],
+            "format": "date"
+          },
+          "retention_streak": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "assessment_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "attempt_id",
+          "module_id",
+          "timestamp",
+          "assessment_level",
+          "score",
+          "total_questions",
+          "time_taken_seconds"
+        ],
+        "properties": {
+          "attempt_id": {
+            "type": "string"
+          },
+          "module_id": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "assessment_level": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "score": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "total_questions": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "time_taken_seconds": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "passed": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "learner_id": "STU_2026_0901",
+  "name": "Arun Kumar",
+  "created_at": "2026-11-01T09:00:00Z",
+  "last_active": "2026-11-05T10:30:00Z",
+  "target_exam_date": "2027-03-15",
+  "target_score_percentile": 99.5,
+  "overall_completion_pct": 14.1,
+  "module_records": {
+    "M1": {
+      "module_id": "M1",
+      "status": "mastered",
+      "mastery_tier": 5,
+      "total_attempts": 4,
+      "best_score_pct": 95.0,
+      "avg_speed_seconds": 54.2,
+      "last_attempt_at": "2026-11-04T16:20:00Z",
+      "next_review_due": "2026-11-18",
+      "retention_streak": 2
+    },
+    "M2": {
+      "module_id": "M2",
+      "status": "in_progress",
+      "mastery_tier": 3,
+      "total_attempts": 2,
+      "best_score_pct": 75.0,
+      "avg_speed_seconds": 68.0,
+      "last_attempt_at": "2026-11-05T08:15:00Z",
+      "next_review_due": "2026-11-08",
+      "retention_streak": 1
+    },
+    "M3": {
+      "module_id": "M3",
+      "status": "not_started",
+      "mastery_tier": 0,
+      "total_attempts": 0,
+      "best_score_pct": 0.0,
+      "avg_speed_seconds": 0.0,
+      "last_attempt_at": null,
+      "next_review_due": null,
+      "retention_streak": 0
+    },
+    "T1": {
+      "module_id": "T1",
+      "status": "mastered",
+      "mastery_tier": 5,
+      "total_attempts": 3,
+      "best_score_pct": 100.0,
+      "avg_speed_seconds": 38.5,
+      "last_attempt_at": "2026-11-03T11:00:00Z",
+      "next_review_due": "2026-11-17",
+      "retention_streak": 2
+    },
+    "G1": {
+      "module_id": "G1",
+      "status": "competent",
+      "mastery_tier": 4,
+      "total_attempts": 2,
+      "best_score_pct": 88.0,
+      "avg_speed_seconds": 45.0,
+      "last_attempt_at": "2026-11-04T14:00:00Z",
+      "next_review_due": "2026-11-11",
+      "retention_streak": 1
+    },
+    "D1": {
+      "module_id": "D1",
+      "status": "in_progress",
+      "mastery_tier": 2,
+      "total_attempts": 1,
+      "best_score_pct": 70.0,
+      "avg_speed_seconds": 72.0,
+      "last_attempt_at": "2026-11-05T09:40:00Z",
+      "next_review_due": "2026-11-07",
+      "retention_streak": 0
+    },
+    "O1": {
+      "module_id": "O1",
+      "status": "not_started",
+      "mastery_tier": 0,
+      "total_attempts": 0,
+      "best_score_pct": 0.0,
+      "avg_speed_seconds": 0.0,
+      "last_attempt_at": null,
+      "next_review_due": null,
+      "retention_streak": 0
+    }
+  },
+  "assessment_history": [
+    {
+      "attempt_id": "ATT_20261102_001",
+      "module_id": "M1",
+      "timestamp": "2026-11-02T10:00:00Z",
+      "assessment_level": 2,
+      "score": 5,
+      "total_questions": 5,
+      "time_taken_seconds": 180,
+      "passed": true
+    },
+    {
+      "attempt_id": "ATT_20261103_002",
+      "module_id": "M1",
+      "timestamp": "2026-11-03T15:30:00Z",
+      "assessment_level": 3,
+      "score": 8,
+      "total_questions": 10,
+      "time_taken_seconds": 580,
+      "passed": true
+    },
+    {
+      "attempt_id": "ATT_20261104_003",
+      "module_id": "M1",
+      "timestamp": "2026-11-04T16:20:00Z",
+      "assessment_level": 5,
+      "score": 10,
+      "total_questions": 10,
+      "time_taken_seconds": 542,
+      "passed": true
+    },
+    {
+      "attempt_id": "ATT_20261105_004",
+      "module_id": "M2",
+      "timestamp": "2026-11-05T08:15:00Z",
+      "assessment_level": 3,
+      "score": 6,
+      "total_questions": 8,
+      "time_taken_seconds": 544,
+      "passed": false
+    }
+  ]
+}
